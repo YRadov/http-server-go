@@ -24,7 +24,7 @@ func Template(w http.ResponseWriter, tmpl string, p *model.Page) {
 	//	http.Error(w, err.Error(), http.StatusInternalServerError)
 	//}
 
-	err := templates.ExecuteTemplate(w, "templates/"+tmpl+".html", p)
+	err := templates.ExecuteTemplate(w, tmpl+".html", p)
 
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
