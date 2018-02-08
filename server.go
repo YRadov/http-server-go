@@ -1,8 +1,8 @@
 package main
 
 import (
-	"net/http"
 	"http_server/crud"
+	"net/http"
 )
 
 func main() {
@@ -17,7 +17,7 @@ func main() {
 
 	http.HandleFunc("/edit/", crud.EditHandler)
 
-	//http.HandleFunc("/save/", crud.SaveHandler)
+	http.HandleFunc("/save/", crud.SaveHandler)
 
 	http.ListenAndServe(":9000", nil)
 
