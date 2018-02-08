@@ -1,9 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"http_server/crud"
 	"net/http"
-	"fmt"
 )
 
 func main() {
