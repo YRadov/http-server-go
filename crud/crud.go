@@ -13,7 +13,7 @@ func ViewHandler(w http.ResponseWriter, r *http.Request) {
 	p, err := model.LoadPage(title)
 
 	if err != nil {
-		http.Redirect(w, r, "/edit/" + title, http.StatusFound)
+		http.Redirect(w, r, "/edit/"+title, http.StatusFound)
 
 		return
 	}
@@ -55,8 +55,12 @@ func SaveHandler(w http.ResponseWriter, r *http.Request) {
 
 	p := &model.Page{Title: title, Body: []byte(body)}
 
-	p.Save()
+	err := p.Save()
 
-	http.Redirect(w, r, "/view/" + title, http.StatusFound)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 } //SaveHandler
-
